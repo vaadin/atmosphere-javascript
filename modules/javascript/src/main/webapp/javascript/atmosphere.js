@@ -1608,8 +1608,8 @@
                             if (!_response.status) {
                                 _response.status = 500;
                             }
-                            _clearState();
                             if (!_response.errorHandled) {
+                                _clearState();
                                 reconnectF();
                             }
                         };
