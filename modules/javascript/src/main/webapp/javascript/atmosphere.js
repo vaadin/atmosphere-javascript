@@ -1,4 +1,4 @@
-lﬁ/**
+/**
  * Copyright 2012 Jeanfrancois Arcand
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -1504,7 +1504,7 @@ lﬁ/**
                 }
 
                 if (rq.contentType !== '') {
-                    url += "&Content-Type=" + encodeURIComponent(rq.contentType);
+                    url += "&Content-Type=" + rq.contentType;
                 }
 
                 if (rq.enableProtocol) {

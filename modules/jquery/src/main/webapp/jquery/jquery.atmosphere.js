@@ -1435,7 +1435,7 @@ jQuery.atmosphere = function () {
                 }
 
                 if (rq.contentType !== '') {
-                    url += "&Content-Type=" + encodeURIComponent(rq.contentType);
+                    url += "&Content-Type=" + rq.contentType;
                 }
 
                 if (rq.enableProtocol) {
