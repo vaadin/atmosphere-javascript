@@ -1646,6 +1646,13 @@
                     }
                 };
 
+                var disconnected = function () {
+                    // Prevent onerror callback to be called
+                    _response.errorHandled = true;
+                    _clearState();
+                    reconnectF();
+                };
+
                 if (rq.force || (rq.reconnect && (rq.maxRequest === -1 || rq.requestCount++ < rq.maxRequest))) {
                     rq.force = false;
 
@@ -1719,10 +1726,7 @@
                             }
 
                             if (status >= 300 || status === 0) {
-                                // Prevent onerror callback to be called
-                                _response.errorHandled = true;
-                                _clearState();
-                                reconnectF();
+                                disconnected();
                                 return;
                             }
 
@@ -1749,10 +1753,11 @@
                         if (update) {
                             var responseText = ajaxRequest.responseText;
 
+                            // IE behave the same way when resuming long-polling or when the server goes down.
                             if (atmosphere.util.trim(responseText).length === 0 && rq.transport === 'long-polling') {
                                 // For browser that aren't support onabort
                                 if (!ajaxRequest.hasData) {
-                                    _reconnect(ajaxRequest, rq, rq.pollingInterval);
+                                    disconnected();
                                 } else {
                                     ajaxRequest.hasData = false;
                                 }
