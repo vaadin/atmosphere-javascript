@@ -38,8 +38,7 @@
 
     "use strict";
 
-    var version = "2.2.13-javascript",
-        atmosphere = {},
+    var atmosphere = {},
         guid,
         offline = false,
         requests = [],
@@ -48,7 +47,7 @@
         hasOwn = Object.prototype.hasOwnProperty;
 
     atmosphere = {
-
+        version: "2.2.13-javascript",
         onError: function (response) {
         },
         onClose: function (response) {
@@ -1777,7 +1776,7 @@
 
                 url += (url.indexOf('?') !== -1) ? '&' : '?';
                 url += "X-Atmosphere-tracking-id=" + rq.uuid;
-                url += "&X-Atmosphere-Framework=" + version;
+                url += "&X-Atmosphere-Framework=" + atmosphere.version;
                 url += "&X-Atmosphere-Transport=" + rq.transport;
 
                 if (rq.trackMessageLength) {
@@ -2171,7 +2170,7 @@
                 }
 
                 if (!_request.dropHeaders) {
-                    ajaxRequest.setRequestHeader("X-Atmosphere-Framework", version);
+                    ajaxRequest.setRequestHeader("X-Atmosphere-Framework", atmosphere.version);
                     ajaxRequest.setRequestHeader("X-Atmosphere-Transport", request.transport);
 
                     if (request.heartbeat !== null && request.heartbeat.server !== null) {
