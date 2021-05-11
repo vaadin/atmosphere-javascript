@@ -164,7 +164,7 @@
     </repositories>
     <distributionManagement>
         <repository>
-            <id>sonatype-nexus-staging</id>
+            <id>vaadin-staging</id>
             <name>Sonatype Release</name>
             <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
